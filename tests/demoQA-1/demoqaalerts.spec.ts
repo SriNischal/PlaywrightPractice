@@ -1,5 +1,5 @@
 import { chromium, expect, test, Page, Browser } from "@playwright/test";
-import { Support } from "../../Utils/demoqaconstants";
+import { Support } from "../../utils/demoqaconstants";
 import { HomePage } from "../../PageObjects/demoqaPage";
 
 let page: Page;
@@ -32,28 +32,28 @@ test("Verification Timer Alert in DemoQA", async () => {
 });
 
 
-// test("Verification Confirm Alert in dimiss", async () => {
+test("Verification Confirm Alert in dimiss", async () => {
    
-//     page.on('dialog', async dialog => {
-//         console.log(dialog.message());
-//         await dialog.dismiss();
-//         const alerttitle = await page.locator('#confirmResult').textContent();
-//         expect(alerttitle).toEqual("You selected Cancel")
-//         console.log(alerttitle)
-//     });
-//     await page.locator("#confirmButton").click()
-//     await page.waitForTimeout(5000);
+    page.on('dialog', async dialog => {
+        console.log(dialog.message());
+        await dialog.dismiss();
+        const alerttitle = await page.locator('#confirmResult').textContent();
+        expect(alerttitle).toEqual("You selected Cancel")
+        console.log(alerttitle)
+    });
+    await page.locator("#confirmButton").click()
+    await page.waitForTimeout(5000);
 
-// });
-// test("Verification Prompt Alert in DemoQA", async () => {
-//     await page.locator("#promtButton").click()
-//     await page.waitForTimeout(5000);
-//     page.on('dialog', async dialog => {
-//         console.log(dialog.message());
-//         await dialog.accept('suprith');
-//     });
+});
+test("Verification Prompt Alert in DemoQA", async () => {
+    await page.locator("#promtButton").click()
+    await page.waitForTimeout(5000);
+    page.on('dialog', async dialog => {
+        console.log(dialog.message());
+        await dialog.accept('suprith');
+    });
     
-// });
+});
 
 
 test.afterAll(async () => {

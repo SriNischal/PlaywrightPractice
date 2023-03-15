@@ -15,9 +15,9 @@ test.beforeAll(async () => {
     await page.setViewportSize({ width: 1500, height: 1000 });
     homePage = new HomePage(page);
     support = new Support();
+    await homePage.baseURL();
 });
 test("Verification of frames in DemoQA", async () => {
-    await homePage.baseURL();
     await homePage.clickFormBtn();
     await expect(page).toHaveURL(support.formsurl);
     await homePage.alrtbtn.click();
@@ -37,8 +37,6 @@ test("Verification of frames in DemoQA", async () => {
     expect (nframechildtext).toEqual(support.ctext);
   
 });
-
-
 test.afterAll(async () => {
     await browser.close();
 })

@@ -5,11 +5,13 @@ let support: Support;
 export class HomePage {
     readonly page: Page;
     readonly formLocators: any;
-
     readonly pageTitle: string;
     readonly alrtbtn: Locator;
     readonly browserbtn: string;
     readonly alertbtn: Locator;
+    readonly confirmtextcontent :string;
+    readonly confirmbtn : string;
+    readonly promtbtn : string;
     readonly framebtn: string;
     readonly newTabbtn: string;
     readonly newWindowbtn: string;
@@ -25,7 +27,6 @@ export class HomePage {
     readonly childframe: string;
     readonly pframe: string;
     readonly cframe: string;
-   
     readonly modalbtn: Locator;
     readonly modalpage: string;
     readonly smallmodelbtn: Locator;
@@ -34,6 +35,7 @@ export class HomePage {
     readonly largemodelbtn: Locator;
     readonly largemodalpage: string;
     readonly largemodalclosebtn: Locator;
+
 
     constructor(page: Page) {
         this.page = page;
@@ -76,6 +78,9 @@ export class HomePage {
         this.newWindowMessagebtn = ("'New Window Message'");
         this.seeAlrtbtn =page.locator('#alertButton');
         this.timerAlrtbtn =page.locator('#timerAlertButton');
+        this.confirmtextcontent= ('#confirmResult');
+        this.confirmbtn=('#confirmButton');
+        this.promtbtn=('#promtButton');
         this.firstFrame = '#frame1';
         this.secondFrame = '#frame2';
         this.framebtn = "'Frames'"
@@ -85,7 +90,6 @@ export class HomePage {
         this.childframe = "//iframe[@srcdoc='<p>Child Iframe</p>']"
         this.pframe = "//body[text()='Parent frame']"
         this.cframe = "//body/p[text()='Child Iframe']"
-       
         this.modalbtn = page.locator("'Modal Dialogs'");
         this.modalpage = "//div[text()='Click on button to see modal']";
         this.smallmodelbtn = page.locator(`button[id="showSmallModal"]`);

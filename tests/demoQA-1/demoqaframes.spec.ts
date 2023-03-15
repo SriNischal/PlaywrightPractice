@@ -14,10 +14,10 @@ test.beforeAll(async () => {
     await page.setViewportSize({ width: 1500, height: 1000 });
     homePage = new HomePage(page);
     support = new Support();
+    await homePage.baseURL();
 });
 test("Verification of frames in DemoQA", async () => {
-    await homePage.baseURL();
-    await homePage.clickFormBtn();
+     await homePage.clickFormBtn();
     await expect(page).toHaveURL(support.formsurl);
     await page.locator(homePage.alrtbtn).click();
     await page.locator(homePage.framebtn).click()
@@ -29,8 +29,6 @@ test("Verification of frames in DemoQA", async () => {
     const secondFrame = page.frameLocator(frametwo);
     const frameText2= await secondFrame.locator(homePage.frameText).textContent();
     expect(frameText2).toEqual(support.frametext);
-    console.log(frameText);
-    console.log(frameText2);
 
      });
 

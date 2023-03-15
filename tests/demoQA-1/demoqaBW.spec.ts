@@ -14,9 +14,9 @@ test.beforeAll(async () => {
     await page.setViewportSize({ width: 1500, height: 1000 });
     homePage = new HomePage(page);
     support = new Support();
+    await homePage.baseURL();
 });
 test("Verification of Browser Windows in DemoQA", async () => {
-    await homePage.baseURL();
     await homePage.clickFormBtn();
     await expect(page).toHaveURL(support.formsurl);
     await page.locator(homePage.alrtbtn).click();

@@ -14,11 +14,10 @@ test.beforeAll(async () => {
     await page.setViewportSize({ width: 1500, height: 1000 });
     homePage = new HomePage(page);
     support = new Support();
-    
+    await homePage.baseURL();  
 });
 
 test("Verification of ModalDailog in DemoQA", async () => {
-    await homePage.baseURL();
     await homePage.clickAlertBtn();
     await homePage.clickModalBtn();
     expect(await page.locator(homePage.modalpage).textContent()).toEqual(support.modalText);

@@ -23,4 +23,6 @@ export class Support {
      modalText = "Click on button to see modal";
      smallmodalText = "This is a small modal. It has very less content";
      largeModalText = "Large Modal";
+     confimText = "You selected Cancel";
+     promptmsg="suprith";
 }

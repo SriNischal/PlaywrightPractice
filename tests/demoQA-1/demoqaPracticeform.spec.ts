@@ -14,10 +14,10 @@ test.beforeAll(async () => {
     await page.setViewportSize({ width: 1920, height: 1080 });
     homePage = new HomePage(page);
     support = new Support();
+    await homePage.baseURL();
 });
 
 test("Verification of Practice Form DemoQA", async () => {
-    await homePage.baseURL();
     await homePage.clickFormBtn();
     await expect(page).toHaveURL(support.practiceFormUrl)
     await homePage.fillFields();

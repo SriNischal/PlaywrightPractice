@@ -14,10 +14,10 @@ test.beforeAll(async () => {
     await page.setViewportSize({ width: 1500, height: 1000 });
     homePage = new HomePage(page);
     support = new Support();
+    await homePage.baseURL();
 });
 
 test("Verification of Aletrs in DemoQA", async () => {
-    await homePage.baseURL();
     await homePage.clickAlertWindowBtn();
     await homePage.clickAlertBtn();
     await homePage.clickToSeeAlert();
@@ -37,20 +37,20 @@ test("Verification Confirm Alert in dimiss", async () => {
     page.on('dialog', async dialog => {
         console.log(dialog.message());
         await dialog.dismiss();
-        const alerttitle = await page.locator('#confirmResult').textContent();
-        expect(alerttitle).toEqual("You selected Cancel")
+        const alerttitle = await page.locator(homePage.confirmtextcontent).textContent();
+        expect(alerttitle).toEqual(support.confimText)
         console.log(alerttitle)
     });
-    await page.locator("#confirmButton").click()
+    await page.locator(homePage.confirmbtn).click()
     await page.waitForTimeout(5000);
 
 });
 test("Verification Prompt Alert in DemoQA", async () => {
-    await page.locator("#promtButton").click()
+    await page.locator(homePage.promtbtn).click()
     await page.waitForTimeout(5000);
     page.on('dialog', async dialog => {
         console.log(dialog.message());
-        await dialog.accept('suprith');
+        await dialog.accept(support.promptmsg);
     });
     
 });
